@@ -7,6 +7,7 @@ env:
     - TASK=syscall
     - TASK=malloc
     - TASK=copolicy
+    - TASK=cotimer
 
 script :
   - ( cd $TASK; ./test/run.sh )
