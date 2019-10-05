@@ -4,8 +4,8 @@ sudo: true
 env:
   matrix:
     - TASK=example
-    - TASK=syscall
-    - TASK=malloc
+    #- TASK=syscall
+    #- TASK=malloc
     - TASK=copolicy
     - TASK=cotimer
 
