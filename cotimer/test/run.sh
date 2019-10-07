@@ -10,7 +10,8 @@ check() {
 
 	echo ${base}:
 
-	"$@" < $base.in | \
+	awk '!/^#/' $base.in | \
+	"$@" | \
 		awk '
 			$1 == "reftime" { t = $2 ; next }
 			$8 == "reference" { $9 = $9 - t ; print ; next }

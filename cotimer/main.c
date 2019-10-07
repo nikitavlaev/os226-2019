@@ -6,12 +6,13 @@
 
 #include "sched.h"
 
-static void *alloc(void *pool, int poolsz, void **next, int sz)
-{
+
+static void *alloc(void *pool, int poolsz, void **next, int sz) {
 	void *a = *next;
-	*next = (char *)*next + sz;
+	*next = (char*)*next + sz;
 	return a;
 }
+
 #define ALLOC(pool, next) \
 	alloc(pool, sizeof(pool), &next, sizeof(*pool))
 
@@ -46,7 +47,6 @@ void app1(void *aspace)
 		sched_cont(app1, aspace, as->period);
 	}
 }
-
 struct work
 {
 	int duration;
@@ -73,6 +73,7 @@ void aireg(void *aspace)
 	}
 }
 
+
 int main(int argc, char *argv[])
 {
 	char name[64];
@@ -82,7 +83,6 @@ int main(int argc, char *argv[])
 
 	struct app1_aspace a1pool[16];
 	void *a1next = a1pool;
-
 	struct work workpool[128];
 	void *worknext = workpool;
 	struct aireg_space airpool[16];
@@ -114,6 +114,7 @@ int main(int argc, char *argv[])
 			as->work = worknext;
 
 			struct work *w;
+
 			do
 			{
 				w = ALLOC(workpool, worknext);
